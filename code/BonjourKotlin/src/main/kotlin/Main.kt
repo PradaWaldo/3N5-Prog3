@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
         val nom = args[0]
         afficher(nom)
     } else {
-        println("Prada Velasque")
+        println("*")
     }
 }
 
