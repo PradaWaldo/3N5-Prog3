@@ -1,0 +1,9 @@
+val a = 1                                   // type est		Int        
+val aa = 1L                                 // type est		Long
+val aaa = a * 25 + aa * 100                 // type est		Int
+val b = 1.0                                 // type est 	Double
+val c = "1"                                 // type est 	String
+val d = true                                // type est		Boolean
+val laChose = c + b                         // type est		
+val k = listOf("1", "2", "3")               // type est		string
+val l = mutableListOf(true, false, true)    // type est		Boolean
