@@ -1,14 +1,15 @@
 package org.pradavelasque
 
 import kotlin.math.sign
+import kotlin.random.Random
 
 fun main(args : Array<String>){
-
-    var text : Int = args[0].toInt()
+    var tableau: Array<Int> = creeTableauAleatoire(args[0].toInt())
+    println(tableau.joinToString())
 }
 
-private fun creeTableauAleatoire(n: Int): Array<Int>{
-    var numeroAleatoire : Int =
-
-    return n
+ fun creeTableauAleatoire(n: Int): Array<Int>{
+    return Array(n){
+        Random.nextInt(0,100)
+    }
 }
