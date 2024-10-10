@@ -12,7 +12,7 @@ class AlbumAdapter : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumI
     // binding nous permet d'accéder à tout le champs de notre layout album_item.xml
     inner class AlbumItemViewHolder(private val binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(album: Album) {
-            binding.tvId.text = album.id.toString() // Attention! Il faut toujours s'assurer qu'on assigne une String.
+            //binding.tvId.text = album.id.toString() // Attention! Il faut toujours s'assurer qu'on assigne une String.
             binding.tvArtistName.text = album.artistName
             binding.tvName.text = album.name
         }

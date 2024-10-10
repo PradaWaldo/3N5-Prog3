@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import org.pradavelasque.adapters.AlbumAdapter
 import org.pradavelasque.adapters.MonAdapter
 import org.pradavelasque.databinding.ActivityMainBinding
+import org.pradavelasque.models.Album
 
 private lateinit var binding: ActivityMainBinding
 private lateinit var adapter: AlbumAdapter // L'adapteur est accessible partout dans notre classe
@@ -18,6 +19,8 @@ class MainActivity : AppCompatActivity() {
 
         setupRecycler()
         fillRecycler()
+
+
     }
 
 //    private fun setupRecycler() {
@@ -31,23 +34,27 @@ class MainActivity : AppCompatActivity() {
 //        )
 //    }
 private fun setupRecycler() {
-    adapter = AlbumAdapter() // Créer l'adapteur
-    binding.rvAlbumAdapterAdapter.adapter = adapter // Assigner l'adapteur au RecyclerView
-    binding.rvAlbumAdapterAdapter.setHasFixedSize(true) // Option pour améliorer les performances
-    binding.rvAlbumAdapterAdapter.addItemDecoration( // Ajouter un séparateur entre chaque élément
-        DividerItemDecoration(
-            binding.rvPersonneAdapter.context, DividerItemDecoration.VERTICAL
-        )
-    )
-}
+    adapter = AlbumAdapter()
+    binding.rvAlbumAdapter.adapter = adapter
+    binding.rvAlbumAdapter.setHasFixedSize(true)
+    binding.rvAlbumAdapter.addItemDecoration(
+        DividerItemDecoration(binding.rvAlbumAdapter.context, DividerItemDecoration.VERTICAL))
+    }
 
     private fun fillRecycler() {
-        val items: MutableList<String> = mutableListOf()
+        val items: MutableList<Album> = mutableListOf()
+        var numero : Int = 0
         for (i in 1..10000) {
-            items.add("Item #$i")
+            items.add(Album(numero, "Artiste", "nom"))
+            numero++
         }
-        val newitems: MutableList<String> = mutableListOf("What's Going On", "Pet Sounds", "Blue", "Songs in the Key of Life", "Abbey Road", "Nevermind")
-        adapter.submitList(newitems) // Pour changer le contenu de la liste, utiliser submitList de l'adapteur
+        val newItems : MutableList<Album> = mutableListOf(
+            Album(1, "Thriller", "Michael Jackson"),
+            Album(2, "Back in Black", "AC/DC"),
+            Album(3, "The Dark Side of the Moon", "Pink Floyd"),
+            Album(4, "Bat Out of Hell", "Meat Loaf")
+            )
+        adapter.submitList(newItems) // Pour changer le contenu de la liste, utiliser submitList de l'adapteur
     }
 
 }
