@@ -22,16 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    private fun setupRecycler() {
-//        adapter = MonAdapter() // Créer l'adapteur
-//        binding.rvMonAdapter.adapter = adapter // Assigner l'adapteur au RecyclerView
-//        binding.rvMonAdapter.setHasFixedSize(true) // Option pour améliorer les performances
-//        binding.rvMonAdapter.addItemDecoration( // Ajouter un séparateur entre chaque élément
-//            DividerItemDecoration(
-//                binding.rvMonAdapter.context, DividerItemDecoration.VERTICAL
-//            )
-//        )
-//    }
 private fun setupRecycler() {
     adapter = AlbumAdapter()
     binding.rvAlbumAdapter.adapter = adapter

@@ -1,20 +1,31 @@
 package org.pradavelasque.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import org.pradavelasque.databinding.AlbumItemBinding
 import org.pradavelasque.models.Album
+import org.pradavelasque.ActivityDetails
 
 class AlbumAdapter : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumItemDiffCallback) {
     // binding nous permet d'accéder à tout le champs de notre layout album_item.xml
     inner class AlbumItemViewHolder(private val binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(album: Album) {
             //binding.tvId.text = album.id.toString() // Attention! Il faut toujours s'assurer qu'on assigne une String.
-            binding.tvArtistName.text = album.artistName
-            binding.tvName.text = album.name
+            binding.tvSelectedArtistName.text = album.artistName
+            binding.tvSelectedName.text = album.name
+
+            // Action à réaliser lors du clic sur le nom de l'album
+            binding.albumItem.setOnClickListener {
+                // Action à réaliser lors du clic, par exemple afficher un message ou démarrer une nouvelle activité
+                val intent = Intent(binding.root.context, ActivityDetails::class.java)
+                intent.putExtras(bundleOf("selectedItem" to album))
+                binding.root.context.startActivity(intent)
+            }
         }
     }
 
