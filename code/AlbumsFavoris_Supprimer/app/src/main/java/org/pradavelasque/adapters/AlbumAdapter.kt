@@ -25,6 +25,9 @@ class AlbumAdapter : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumI
                 val intent = Intent(binding.root.context, ActivityDetails::class.java)
                 intent.putExtras(bundleOf("selectedItem" to album))
                 binding.root.context.startActivity(intent)
+
+                binding.btnSupprimer.setOnClickListener{
+                }
             }
         }
     }

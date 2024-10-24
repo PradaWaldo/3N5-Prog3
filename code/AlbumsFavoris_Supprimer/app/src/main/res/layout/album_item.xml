@@ -33,5 +33,24 @@
             android:text="Homme"
             android:textColor="#727272"
             android:textSize="16sp" />
+
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSupprimer"
+            android:layout_gravity="right|center"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:text="Supprimer"
+            android:textSize="10dp"
+            >
+        </Button>
+
+    </LinearLayout>
+
 </LinearLayout>
