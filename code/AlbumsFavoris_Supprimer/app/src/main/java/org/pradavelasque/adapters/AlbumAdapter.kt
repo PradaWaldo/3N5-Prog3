@@ -11,7 +11,7 @@ import org.pradavelasque.databinding.AlbumItemBinding
 import org.pradavelasque.models.Album
 import org.pradavelasque.ActivityDetails
 
-class AlbumAdapter : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumItemDiffCallback) {
+class AlbumAdapter(private val onRemoveAlbum: (Album) -> Unit) : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumItemDiffCallback) {
     // binding nous permet d'accéder à tout le champs de notre layout album_item.xml
     inner class AlbumItemViewHolder(private val binding: AlbumItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(album: Album) {
@@ -25,10 +25,12 @@ class AlbumAdapter : ListAdapter<Album, AlbumAdapter.AlbumItemViewHolder>(AlbumI
                 val intent = Intent(binding.root.context, ActivityDetails::class.java)
                 intent.putExtras(bundleOf("selectedItem" to album))
                 binding.root.context.startActivity(intent)
-
-                binding.btnSupprimer.setOnClickListener{
-                }
             }
+
+            binding.btnSupprimer.setOnClickListener {
+                onRemoveAlbum(album)
+            }
+
         }
     }
 

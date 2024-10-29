@@ -7,10 +7,10 @@ import org.pradavelasque.adapters.AlbumAdapter
 import org.pradavelasque.databinding.ActivityMainBinding
 import org.pradavelasque.models.Album
 
-private lateinit var binding: ActivityMainBinding
-private lateinit var adapter: AlbumAdapter // L'adapteur est accessible partout dans notre classe
-
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: AlbumAdapter // L'adapteur est accessible partout dans notre classe
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,11 +19,10 @@ class MainActivity : AppCompatActivity() {
         setupRecycler()
         fillRecycler()
 
-
     }
 
 private fun setupRecycler() {
-    adapter = AlbumAdapter()
+    adapter = AlbumAdapter({ album -> removeAlbumFromList(album) }) // On passe une lambda à l'adapteur pour pouvoir supprimer un album
     binding.rvAlbumAdapter.adapter = adapter
     binding.rvAlbumAdapter.setHasFixedSize(true)
     binding.rvAlbumAdapter.addItemDecoration(
@@ -45,5 +44,9 @@ private fun setupRecycler() {
             )
         adapter.submitList(newItems) // Pour changer le contenu de la liste, utiliser submitList de l'adapteur
     }
-
+    private fun removeAlbumFromList(album: Album) {
+        val items : MutableList<Album> = adapter.currentList.toMutableList()
+        items.remove(album)
+        adapter.submitList(items)
+    }
 }
