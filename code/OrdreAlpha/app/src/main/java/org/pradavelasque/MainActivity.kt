@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecycler() {
-        adapter = MonAdapter() // Créer l'adapteur
+        adapter = MonAdapter(this) // Créer l'adapteur
         binding.rvMonAdapter.adapter = adapter // Assigner l'adapteur au RecyclerView
         binding.rvMonAdapter.setHasFixedSize(true) // Option pour améliorer les performances
         binding.rvMonAdapter.addItemDecoration( // Ajouter un séparateur entre chaque élément
@@ -40,9 +40,8 @@ class MainActivity : AppCompatActivity() {
             items.add("Item #$i")
         }
         adapter.submitList(mutableListOf(
-                "Lucas","Emma","Léa","Hugo","Chloé","Maxime","Clara","Nathan",
-        "Sarah","Jules","Zoé","Louis","Inès","Gabriel","Camille","Mathis",
-        "Alice","Paul","Manon","Enzo","Charlotte","Raphaël","Jade","Tom","Anaïs")) // Pour changer le contenu de la liste, utiliser submitList de l'adapteur
+                "b","a")) // Pour changer le contenu de la liste, utiliser submitList de l'adapteur
     }
+
 
 }
